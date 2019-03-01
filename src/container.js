@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
 import orderBy from 'lodash/orderBy';
 import App from './App';
-import { onDelete, addPlayer, openModal, closeModal, updateAddPlayerInfo } from './actions';
+import { onDelete, addPlayer, openModal, closeModal, updateFormData, retrievePlayer } from './actions';
 
 const mapStateToProps = state => ({
   players: orderBy(state.scoreBoard.players, ['score', 'lastName'], ['desc', 'asc']),
   modalIsOpen: state.scoreBoard.modalIsOpen,
-  playerToAdd: state.scoreBoard.playerToAdd,
+  formData: state.scoreBoard.formData,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -14,7 +14,8 @@ const mapDispatchToProps = dispatch => ({
   addPlayer: player => dispatch(addPlayer(player)),
   openModal: () => dispatch(openModal()),
   closeModal: () => dispatch(closeModal()),
-  updateAddPlayerInfo: (key, value) => dispatch(updateAddPlayerInfo(key, value)),
+  updateFormData: (key, value) => dispatch(updateFormData(key, value)),
+  retrievePlayer: id => dispatch(retrievePlayer(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

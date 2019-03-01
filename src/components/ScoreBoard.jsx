@@ -2,9 +2,9 @@ import React from 'react';
 import map from 'lodash/map';
 import PropTypes from 'prop-types';
 
-import { PlayersTable, DeleteButton, Button, MainWrapper, ScoreBoardHeader, GoldText, WhiteText } from './styles';
+import { PlayersTable, DeleteButton, Button, MainWrapper, ScoreBoardHeader, GoldText, WhiteText, EditButton } from './styles';
 
-const ScoreBoard = ({ players, onDelete, openModal }) => (
+const ScoreBoard = ({ players, onDelete, openModal, retrievePlayer }) => (
   <MainWrapper>
     <ScoreBoardHeader>
       <GoldText>PGA</GoldText>
@@ -18,6 +18,7 @@ const ScoreBoard = ({ players, onDelete, openModal }) => (
           <td>TOTAL</td>
           <td>PAR 72</td>
           <td>DELETE ?</td>
+          <td>EDIT ?</td>
         </tr>
       </thead>
       <tbody>
@@ -28,6 +29,9 @@ const ScoreBoard = ({ players, onDelete, openModal }) => (
           <td>{score}</td>
           <td>
             <DeleteButton onClick={() => onDelete(id)} />
+          </td>
+          <td>
+            <EditButton onClick={() => retrievePlayer(id)} />
           </td>
         </tr>),
       )}
@@ -41,6 +45,7 @@ ScoreBoard.propTypes = {
   players: PropTypes.instanceOf(Array).isRequired,
   onDelete: PropTypes.func.isRequired,
   openModal: PropTypes.func.isRequired,
+  retrievePlayer: PropTypes.func.isRequired,
 };
 
 export default ScoreBoard;

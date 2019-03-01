@@ -13,8 +13,9 @@ export default class App extends Component {
       openModal,
       modalIsOpen,
       closeModal,
-      playerToAdd,
-      updateAddPlayerInfo,
+      updateFormData,
+      retrievePlayer,
+      formData,
     } = this.props;
 
     const handleSubmit = (event) => {
@@ -24,13 +25,18 @@ export default class App extends Component {
 
     return (
       <div>
-        <ScoreBoard onDelete={onDelete} players={players} openModal={openModal} />
+        <ScoreBoard
+          onDelete={onDelete}
+          players={players}
+          openModal={openModal}
+          retrievePlayer={retrievePlayer}
+        />
         <NewPlayerModal
+          formData={formData}
           modalIsOpen={modalIsOpen}
           closeModal={closeModal}
           handleSubmit={handleSubmit}
-          playerToAdd={playerToAdd}
-          updateAddPlayerInfo={updateAddPlayerInfo}
+          updateFormData={updateFormData}
         />
       </div>
     );
@@ -44,6 +50,7 @@ App.propTypes = {
   openModal: PropTypes.func.isRequired,
   closeModal: PropTypes.func.isRequired,
   modalIsOpen: PropTypes.bool.isRequired,
-  playerToAdd: PropTypes.instanceOf(Object).isRequired,
-  updateAddPlayerInfo: PropTypes.func.isRequired,
+  updateFormData: PropTypes.func.isRequired,
+  retrievePlayer: PropTypes.func.isRequired,
+  formData: PropTypes.instanceOf(Object).isRequired,
 };

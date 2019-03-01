@@ -40,6 +40,12 @@ export const DeleteButton = styled.button`
   border-radius: 8px;
 `;
 
+export const EditButton = styled.button`
+  height: 25px;
+  width: 25px;
+  border-radius: 8px;
+`;
+
 export const Button = styled.button`
   width: 100px;
   height: 40px;
@@ -95,6 +101,6 @@ export const modalStyles = {
     left: '38%',
     top: '15%',
     padding: '0',
-    'border-radius': '8px',
+    borderRadius: '8px',
   },
 };
